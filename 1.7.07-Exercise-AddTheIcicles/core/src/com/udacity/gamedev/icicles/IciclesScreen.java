@@ -18,6 +18,7 @@ public class IciclesScreen implements Screen {
 
     Player player;
     // TODO: Add an instance of Icicles
+    Icicles icicles;
 
 
     @Override
@@ -29,7 +30,7 @@ public class IciclesScreen implements Screen {
 
         player = new Player(iciclesViewport);
         // TODO: Initialize icicles
-
+        icicles = new Icicles(iciclesViewport);
 
     }
 
@@ -38,7 +39,7 @@ public class IciclesScreen implements Screen {
         iciclesViewport.update(width, height, true);
         player.init();
         // TODO: Reset icicles
-
+        icicles.init();
     }
 
     @Override
@@ -50,7 +51,7 @@ public class IciclesScreen implements Screen {
     @Override
     public void render(float delta) {
         // TODO: Update Icicles
-
+        icicles.update(delta);
         player.update(delta);
 
         iciclesViewport.apply(true);
@@ -60,7 +61,7 @@ public class IciclesScreen implements Screen {
         renderer.setProjectionMatrix(iciclesViewport.getCamera().combined);
         renderer.begin(ShapeType.Filled);
         // TODO: Render Icicles
-
+        icicles.render(renderer);
         player.render(renderer);
         renderer.end();
 

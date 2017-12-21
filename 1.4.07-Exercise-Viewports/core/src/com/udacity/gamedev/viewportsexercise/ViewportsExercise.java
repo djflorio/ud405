@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 /**
  * TODO: Start here
@@ -30,13 +31,13 @@ public class ViewportsExercise extends ApplicationAdapter {
 
     ShapeRenderer renderer;
     // TODO: Declare a FitViewport
-
+    FitViewport viewport;
 
     @Override
     public void create() {
         renderer = new ShapeRenderer();
         // TODO: Initialize the viewport with the world width and height
-
+        viewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class ViewportsExercise extends ApplicationAdapter {
     @Override
     public void resize(int width, int height) {
         // TODO: update the viewport and center the camera by passing true as the third argument
-
+        viewport.update(width, height, true);
     }
 
     @Override
@@ -56,10 +57,10 @@ public class ViewportsExercise extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // TODO: Apply the viewport
-
+        viewport.apply();
 
         // TODO: Set the projection matrix of the ShapeRenderer to the combined matrix of the viewport's camera
-
+        renderer.setProjectionMatrix(viewport.getCamera().combined);
 
         renderer.begin(ShapeType.Filled);
         renderer.setColor(Color.WHITE);

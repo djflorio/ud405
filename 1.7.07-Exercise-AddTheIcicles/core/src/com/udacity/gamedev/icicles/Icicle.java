@@ -10,20 +10,21 @@ public class Icicle {
     Vector2 position;
 
     // TODO: Add Vector2 for velocity
+    private Vector2 velocity;
 
 
     public Icicle(Vector2 position) {
         this.position = position;
         // TODO: Initialize velocity
-
+        this.velocity = new Vector2();
     }
 
     public void update(float delta) {
         // TODO: Update velocity using icicle accelration constant
-
+        velocity.mulAdd(Constants.ICICLE_ACCELERATION, delta);
 
         // TODO: Update position using velocity
-
+        position.mulAdd(velocity, delta);
     }
 
     public void render(ShapeRenderer renderer) {

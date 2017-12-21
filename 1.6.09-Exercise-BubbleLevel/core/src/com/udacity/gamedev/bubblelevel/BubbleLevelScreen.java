@@ -67,9 +67,9 @@ public class BubbleLevelScreen extends ScreenAdapter {
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // TODO: Get accelerometer readings
-        float xAxis = 0;
-        float yAxis = 0;
-        float zAxis = 0;
+        float xAxis = Gdx.input.getAccelerometerX();
+        float yAxis = Gdx.input.getAccelerometerY();
+        float zAxis = Gdx.input.getAccelerometerZ();
 
         float totalAcceleration = (float) Math.sqrt(xAxis * xAxis + yAxis * yAxis + zAxis * zAxis);
 
@@ -95,17 +95,22 @@ public class BubbleLevelScreen extends ScreenAdapter {
         renderer.setColor(Color.RED);
 
         // TODO: Draw a circle to indicate 9.8m/s^2
+        float outerRadius = WORLD_SIZE / 3;
 
+        renderer.circle(WORLD_SIZE / 2, WORLD_SIZE / 2, outerRadius, 40);
 
         renderer.setColor(Color.GREEN);
 
         // TODO: Draw a circle to hold the bubble when the phone is flat
-
+        renderer.circle(WORLD_SIZE / 2, WORLD_SIZE / 2, WORLD_SIZE / 20, 20);
 
         renderer.set(ShapeType.Filled);
 
-        // TODO: Draw the bubble
+        float xPos = (WORLD_SIZE / 2) + (yAxis / 9.81f) * outerRadius;
+        float yPos = (WORLD_SIZE / 2) + (xAxis / 9.81f) * outerRadius;
 
+        // TODO: Draw the bubble
+        renderer.circle(xPos, yPos, WORLD_SIZE / 20, 20);
 
         renderer.end();
 
