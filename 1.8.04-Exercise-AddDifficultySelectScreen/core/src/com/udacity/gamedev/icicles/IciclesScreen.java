@@ -21,6 +21,7 @@ public class IciclesScreen extends InputAdapter implements Screen {
     public static final String TAG = IciclesScreen.class.getName();
 
     // TODO: Add IciclesGame member variable
+    IciclesGame game;
 
     Difficulty difficulty;
 
@@ -37,9 +38,9 @@ public class IciclesScreen extends InputAdapter implements Screen {
     int topScore;
 
     // TODO: Accept IciclesGame in the constructor
-    public IciclesScreen(Difficulty difficulty) {
+    public IciclesScreen(IciclesGame game, Difficulty difficulty) {
         // TODO: Save the IciclesGame
-
+        this.game = game;
         this.difficulty = difficulty;
     }
 
@@ -134,7 +135,7 @@ public class IciclesScreen extends InputAdapter implements Screen {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         // TODO: Tell IciclesGame to show the difficulty screen
-
+        game.showDifficultyScreen();
         return true;
     }
 }

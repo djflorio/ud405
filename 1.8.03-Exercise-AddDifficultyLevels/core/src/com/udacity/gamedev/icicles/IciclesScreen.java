@@ -19,7 +19,7 @@ public class IciclesScreen implements Screen {
     public static final String TAG = IciclesScreen.class.getName();
 
     // TODO: Add Difficulty
-
+    Constants.Difficulty difficulty;
 
     ExtendViewport iciclesViewport;
     ShapeRenderer renderer;
@@ -34,9 +34,9 @@ public class IciclesScreen implements Screen {
     int topScore;
 
     // TODO: Accept a Difficulty in the constructor
-    public IciclesScreen() {
+    public IciclesScreen(Constants.Difficulty difficulty) {
         // TODO: Set Difficulty
-
+        this.difficulty = difficulty;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class IciclesScreen implements Screen {
 
         player = new Player(iciclesViewport);
         // TODO: Initialize icicles with the difficulty
-        icicles = new Icicles(iciclesViewport);
+        icicles = new Icicles(iciclesViewport, difficulty);
 
         topScore = 0;
     }
@@ -101,7 +101,7 @@ public class IciclesScreen implements Screen {
         topScore = Math.max(topScore, icicles.iciclesDodged);
 
         // TODO: Show Difficulty level in the top left
-        font.draw(batch, "Deaths: " + player.deaths,
+        font.draw(batch, "Deaths: " + player.deaths + "\nDifficulty: " + difficulty.label,
                 Constants.HUD_MARGIN, hudViewport.getWorldHeight() - Constants.HUD_MARGIN);
         font.draw(batch, "Score: " + icicles.iciclesDodged + "\nTop Score: " + topScore,
                 hudViewport.getWorldWidth() - Constants.HUD_MARGIN, hudViewport.getWorldHeight() - Constants.HUD_MARGIN,

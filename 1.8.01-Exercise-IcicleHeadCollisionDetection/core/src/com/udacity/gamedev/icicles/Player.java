@@ -52,7 +52,11 @@ public class Player {
         boolean isHit = false;
 
         // TODO: Loop over icicles, checking if the point of any icicle is within the player's head
-
+        for (Icicle icicle: icicles.icicleList){
+            if (position.dst(icicle.position) < Constants.PLAYER_HEAD_RADIUS) {
+                isHit = true;
+            }
+        }
 
         return isHit;
     }

@@ -25,8 +25,8 @@ public class Constants {
     public static final float ICICLE_SPAWNS_PER_SECOND = 10.0f;
 
     // TODO: Add screen reference size for scaling the HUD (480 works well)
-
+    public static final float HUD_FONT_REFERENCE_SCREEN_SIZE = 480.0f;
 
     // TODO: Add constant for the margin between the HUD and screen edge
-
+    public static final float HUD_MARGIN = 20.0f;
 }

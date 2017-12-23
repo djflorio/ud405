@@ -8,6 +8,6 @@ public class IciclesGame extends Game {
     @Override
     public void create() {
         // TODO: Create IciclesScreen with a Difficulty
-        setScreen(new IciclesScreen());
+        setScreen(new IciclesScreen(Constants.Difficulty.HARD));
     }
 }

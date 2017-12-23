@@ -12,6 +12,7 @@ public class Icicles {
     public static final String TAG = Icicles.class.getName();
 
     // TODO: Add counter for how many icicles have been dodged
+    private int dodged;
 
     DelayedRemovalArray<Icicle> icicleList;
     Viewport viewport;
@@ -25,7 +26,7 @@ public class Icicles {
         icicleList = new DelayedRemovalArray<Icicle>(false, 100);
 
         // TODO: Set icicles dodged count to zero
-
+        dodged = 0;
     }
 
     public void update(float delta) {
@@ -46,11 +47,15 @@ public class Icicles {
         for (int i = 0; i < icicleList.size; i++) {
             if (icicleList.get(i).position.y < -Constants.ICICLES_HEIGHT) {
                 // TODO: Increment count of icicles dodged
-
+                dodged++;
                 icicleList.removeIndex(i);
             }
         }
         icicleList.end();
+    }
+
+    public int getDodged() {
+        return dodged;
     }
 
     public void render(ShapeRenderer renderer) {
